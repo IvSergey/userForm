@@ -1,15 +1,21 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useState, useEffect, useRef } from 'react';
+import  './form.css'
 
 export const Form = ({ setAuthorized, token, setToken }) => {
+
+    const firstRender = useRef(true)
+
+    const [disable, setDisabled] = useState(true)
+
+    const [nameError, setNameError] = useState(null)
+
+    const [passError, setPassError] = useState(null)
 
     const [userName, setUserName] = useState("")
 
     const [password, setPassword] = useState("")
 
-    const [error, setError] = useState("");
-
-
+    
 
     async function postData(url = '', data = {}) {
         const response = await fetch(url, {
@@ -24,32 +30,11 @@ export const Form = ({ setAuthorized, token, setToken }) => {
     }
 
 
-    // "username": "test_super",
-    // "password": "Nf<U4f<rDbtDxAPn"
-
-    const handleChangeUser = (e) => {
-        if (e.target.value.trim().length > 0) {
-            setUserName(e.target.value);
-            setError("");
-        } else {
-            setError("Поле должно быть заполнено")
-        }
-
-    }
-
-    const handleChangePassword = (e) => {
-        if (e.target.value.trim().length > 0) {
-            setPassword(e.target.value);
-            setError("");
-        } else {
-            setError("Поле должно быть заполнено")
-        }
-
-    }
 
     const handleClick = (e) => {
         e.preventDefault();
-        token ? setAuthorized(token) : setError('Вы не авторизованы')
+        setAuthorized(token)
+
     }
 
     useEffect(() => {
@@ -60,24 +45,48 @@ export const Form = ({ setAuthorized, token, setToken }) => {
             setToken(data.token)
             console.log(data.token)
 
-        }).catch(e => setError(e.message));
+        })
+        if (firstRender.current) {
+            firstRender.current = false
+            return
+        }
+
+        setDisabled(formValidation())
     }, [password, userName]);
+
+    const formValidation = () => {
+        if (userName === "") {
+            setNameError('Имя должно быть заполнено')
+            return true
+        } else if (password === "") {
+            setPassError('Пароль должен быть введен')
+            return true
+        } else if (setNameError(null)) {
+            return false
+        } else{
+             setPassError(null)
+            return false
+        }
+    }
 
     return (
         <div>
-            <form>
-                <div>
-                    <label>
-                        <input value={userName} onChange={(e) => handleChangeUser(e)} name='username' />  UserName
-                    </label>
+            <form className="form">
+                <div className="form__input">
+                    <div className="input">
+                        <label>
+                            <input value={userName} onChange={e => setUserName(e.target.value)} name='username' placeholder="UserName"/>  
+                        </label>
+                    </div>
+                    <div className="input">
+                        <label>
+                            <input value={password} onChange={e => setPassword(e.target.value)} name='password' placeholder="Password"/>
+                        </label>
+                    </div>
                 </div>
-                <div>
-                    <label>
-                        <input value={password} onChange={(e) => handleChangePassword(e)} name='password' />Password
-                    </label>
-                </div>
-                <button onClick={(e) => { handleClick(e) }}>  send  </button>
-                {error && <div>{`${error}`}</div>}
+                <button type="submit" disabled={disable} onClick={(e) => { handleClick(e) }} className="btn">  send  </button>
+                {nameError && <p>{nameError}</p>} 
+                {passError && <p>{passError}</p>}
             </form>
         </div>
     )

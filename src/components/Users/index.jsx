@@ -3,12 +3,13 @@ import React, { useState, useEffect } from 'react';
 
 
 const User = ({ token }) => {
- 
+
+   
     const [resData, setData] = useState([]);
 
-    const [error, setError] = useState("")
+    const [error, setError] = useState("");
 
-    const [value, setValue] = useState("")
+    const [value, setValue] = useState("");
 
     async function postData(url = '') {
         const response = await fetch(url, {
@@ -24,12 +25,14 @@ const User = ({ token }) => {
     }
 
     useEffect(() => {
+        
         const res = postData('http://emphasoft-test-assignment.herokuapp.com/api/v1/users/')
             .then(data => {
                 return setData(data)
             }).catch(e => setError(e.message));
     }, [token]);
 
+    
 
     const handleChangeName = (e) =>{
         setValue(e.target.value)
