@@ -85,8 +85,9 @@ export const Form = ({ setAuthorized, token, setToken }) => {
                     </div>
                 </div>
                 <button type="submit" disabled={disable} onClick={(e) => { handleClick(e) }} className="btn">  send  </button>
-                {nameError && <p>{nameError}</p>} 
+                <div className="err">{nameError && <p>{nameError}</p>} 
                 {passError && <p>{passError}</p>}
+                </div>
             </form>
         </div>
     )
