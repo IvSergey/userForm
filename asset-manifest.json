@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/userForm/static/css/main.45676170.chunk.css",
+    "main.js": "/userForm/static/js/main.f50ebc92.chunk.js",
+    "main.js.map": "/userForm/static/js/main.f50ebc92.chunk.js.map",
+    "runtime-main.js": "/userForm/static/js/runtime-main.b09de19e.js",
+    "runtime-main.js.map": "/userForm/static/js/runtime-main.b09de19e.js.map",
+    "static/js/2.d701dd0c.chunk.js": "/userForm/static/js/2.d701dd0c.chunk.js",
+    "static/js/2.d701dd0c.chunk.js.map": "/userForm/static/js/2.d701dd0c.chunk.js.map",
+    "index.html": "/userForm/index.html",
+    "precache-manifest.7cdbb6d2bf2d89968bb312f89fa1f42a.js": "/userForm/precache-manifest.7cdbb6d2bf2d89968bb312f89fa1f42a.js",
+    "service-worker.js": "/userForm/service-worker.js",
+    "static/css/main.45676170.chunk.css.map": "/userForm/static/css/main.45676170.chunk.css.map",
+    "static/js/2.d701dd0c.chunk.js.LICENSE.txt": "/userForm/static/js/2.d701dd0c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b09de19e.js",
+    "static/js/2.d701dd0c.chunk.js",
+    "static/css/main.45676170.chunk.css",
+    "static/js/main.f50ebc92.chunk.js"
+  ]
+}
