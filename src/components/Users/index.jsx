@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
-
-
+import {fetch} from "whatwg-fetch";
 
 const User = ({ token }) => {
-
-   
     const [resData, setData] = useState([]);
 
     const [error, setError] = useState("");
