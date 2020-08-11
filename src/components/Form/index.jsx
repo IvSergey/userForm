@@ -39,7 +39,7 @@ export const Form = ({ setAuthorized, token, setToken }) => {
     }
 
     useEffect(() => {
-        postData('http://emphasoft-test-assignment.herokuapp.com/api-token-auth/', {
+        postData('https://emphasoft-test-assignment.herokuapp.com/api-token-auth/', {
             "username": userName,
             "password": password
         }).then(data => {

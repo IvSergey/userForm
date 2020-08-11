@@ -23,7 +23,7 @@ const User = ({ token }) => {
 
     useEffect(() => {
         
-        const res = postData('http://emphasoft-test-assignment.herokuapp.com/api/v1/users/')
+        const res = postData('https://emphasoft-test-assignment.herokuapp.com/api/v1/users/')
             .then(data => {
                 return setData(data)
             }).catch(e => setError(e.message));
